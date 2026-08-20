@@ -3,6 +3,10 @@ import fs from 'node:fs/promises' ;
 
 const data = [] ;
 
+/**
+ * fileOrganiser Can be Used to organise files based on their extensions
+ * @param {string} srcDir - Path for the dir to be organised
+ */
 async function fileOrganiser(srcDir) {
     try {
         const entries = await fs.readdir(srcDir, { withFileTypes:true, recursive:true }) ;

@@ -1,14 +1,14 @@
 import path from 'node:path' ;
 import fs from 'node:fs/promises' ;
 
-async function mkdir(fileName, srcDir='./demo') {
+async function mkdir(dirName) {
     try {
-        const fullPath = path.join(srcDir, fileName) ;
-        await fs.writeFile(fullPath, '', 'utf-8') ;
-        console.log(`Sir, File has been created`) ;
+        const dirPath = path.join(process.cwd(), dirName) ;
+        const res = await fs.mkdir(dirPath, { recursive:true }) ;
+        console.log(`${res ?? 'Directory has been created successfully'}`) ;
     } catch(err) {
         console.log(`Sorry sir, Something went wrong..`) ;
-        console.log(err) ;
+        console.log(err.message) ;
     }
 }
 
