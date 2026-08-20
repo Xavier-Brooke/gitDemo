@@ -1,0 +1,16 @@
+{
+  "name": "commander",
+  "version": "1.0.0",
+  "description": "commander is CLI tool, which aplies the concept of fs and path modules provided by node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Xavier Brooke",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "commander" : "./index.js"
+  }
+}
