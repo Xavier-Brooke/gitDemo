@@ -16,6 +16,10 @@ async function main() {
       await utils.mkdir(dirName);
       break;
 
+    case 'cwd' :
+      console.log(utils.cwd()) ;
+      break ;
+
     default:
       console.log(`This is default response for switch case`);
   }
