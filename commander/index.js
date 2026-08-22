@@ -6,22 +6,24 @@ const args = process.argv.slice(2);
 const command = args[0];
 
 async function main() {
-  switch (command) {
-    case "organise":
-      await utils.fileOrganiser("./demo");
-      break;
+ 
+  if((command?.toLowerCase() === 'version') || (command === '-v') || (command === '--version')) {
+    console.log('v1.0.0') ;
+  } else 
 
-    case "mkdir":
-      const dirName = args[1] ;
-      await utils.mkdir(dirName);
-      break;
+  if(command?.toLocaleLowerCase() === 'cwd') {
+    console.log(utils.cwd()) ;
+  } else 
 
-    case 'cwd' :
-      console.log(utils.cwd()) ;
-      break ;
+  if(command?.toLocaleLowerCase() === 'mkdir') {
+    const dirName = args[1] ;
+    await utils.mkdir(dirName);
+  } else 
 
-    default:
-      console.log(`This is default response for switch case`);
+  if(command?.toLocaleLowerCase() === 'organise') {
+    await utils.fileOrganiser("./demo");
+  } else {
+    console.log(`Invalid command`) ;
   }
 }
 
