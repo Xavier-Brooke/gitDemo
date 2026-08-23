@@ -3,3 +3,5 @@ commander/demo
 Pandas/
 NumPy/
 matplotlib/
+
+*.ipynb
