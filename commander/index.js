@@ -20,9 +20,13 @@ async function main() {
                     console.log(`Display version information about commander`) ;
                 } else {
                     console.log(`version : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                    console.log(`Try 'commander --version --help' for more information`) ;
+                    process.exitCode = 1 ;
                 }
             } else {
                 console.log(`version : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                console.log(`Try 'commander --version --help' for more information`) ;
+                process.exitCode = 1 ;
             }
         }  
 
@@ -35,9 +39,13 @@ async function main() {
                     console.log(`Print the name of the current working directory.`) ;
                 } else {
                     console.log(`cwd : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                    console.log(`Try 'commander cwd --help' for more information`) ;
+                    process.exitCode = 1 ;
                 }
             } else {
                 console.log(`cwd : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                console.log(`Try 'commander cwd --help' for more information`) ;
+                process.exitCode = 1 ;
             }
         } 
 
@@ -45,13 +53,15 @@ async function main() {
         else if(command?.toLowerCase() === 'mkdir') {
             if(!flag) {
                 console.log(`mkdir: missing operand`) ;
-                console.log(`Try 'mkdir --help' for more information`) ;
+                console.log(`Try 'commander mkdir --help' for more information`) ;
             } else if((flag === '--help') || (flag === '-h')) {
                 if(!args[2]) {
                     console.log(`Usage: mkdir [OPTION]... DIRECTORY...`) ;
                     console.log(`Create the DIRECTORY(ies), if they do not already exist.`)
                 } else {
                     console.log(`mkdir : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                    console.log(`Try 'commander mkdir --help' for more information`) ;
+                    process.exitCode = 1 ;
                 }
             } else {
                 const dirName = args.slice(1) ;
@@ -70,19 +80,17 @@ async function main() {
                     console.log(`Create the DIRECTORY(ies), if they do not already exist.`)
                 } else if(isInvalidStart) {
                     console.log(`mkdir : unknown option ${invalidName}`) ;
-                    console.log(`Try 'mkdir --help' for more information`) ;
+                    console.log(`Try 'commander mkdir --help' for more information`) ;
+                    process.exitCode = 1 ;
                 } else if(!isInvalidStart) {
                     await utils.mkdir(dirName) ;
                 }
             }
-            // console.log(`Creating dir`) ;
-            // const dirName = args[1] ;
-            // await utils.mkdir(dirName) ;
-            // console.log(`Folder Created Successfully`) ;
         }
 
         else {
             console.log(`commander : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command. See 'commander --help'`) ;
+            process.exitCode = 127 ;
         }
     } catch(err) {
         console.log(`Something went wrong...`) ;

@@ -8,7 +8,7 @@ import process from 'node:process';
  */
 async function mkdir(dirName) {
     try {
-        const validName = /^[^\\/:*?"<>|]+$/;
+        const validName = /^(?!(?:COM[1-9]|LPT[1-9]|CON|PRN|NUL|AUX)(?:\..*)?$)[^\\/:*?"<>|]+$/i;
         const invalidArr = ['/', '\\', ':', '*', '?', '"', '<', '>', '|'] ;
         let invalidName = dirName.filter((name) => !validName.test(name)) ;
         let validNameArr = dirName.filter(name => validName.test(name)) ;
@@ -24,7 +24,8 @@ async function mkdir(dirName) {
             checkLoop = true ;
         }
         if(checkLoop) {
-            console.log(`Hint :- Don't include the given character in Directory name [${invalidArr.join(' ')}]`) ;
+            console.log(`Guide 1 :- Don't include the given character in Directory name [${invalidArr.join(' ')}]`) ;
+            console.log(`Guide 2 :- Don't use the reserved Windows device names. [CON, NUL, PRN, AUX, COM1-COM9, LPT1-LPT9]`) ;
         }
     } catch(err) {
         if(err.code === 'EEXIST') {
