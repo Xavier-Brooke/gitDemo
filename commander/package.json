@@ -1,0 +1,16 @@
+{
+  "name": "commander",
+  "version": "1.0.0",
+  "description": "commander is a CLI tool, for File Manuplation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["CLI Tool", "File Manuplatior"],
+  "author": "Xavier Brooke",
+  "license": "ISC",
+  "type": "module",
+  "bin" : {
+    "commander" : "./index.js"
+  }
+}
