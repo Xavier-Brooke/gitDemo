@@ -5,3 +5,5 @@ NumPy/
 matplotlib/
 
 *.ipynb
+
+node_modules
