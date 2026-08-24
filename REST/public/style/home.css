@@ -1,0 +1,15 @@
+.user-div {
+    height: 500px;
+    width: 300px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 10px;
+}
+
+.user-info-name {
+    background-color: antiquewhite;
+}
+
+.user-info-msg {
+    background-color: aquamarine;
+}
