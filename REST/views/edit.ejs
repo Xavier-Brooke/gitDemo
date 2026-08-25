@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit</title>
+</head>
+<body>
+    <h1>Edit your post</h1>
+    <form method="post" action="/api/<%= user.id %>">
+        <label for="name">Edit your name :-</label>
+        <input type="text" required id="name" name="name" value="<%= user.name %>">
+        <br><br>
+        <textarea name="msg" rows="5" cols="35"><%= user.msg %></textarea>
+        <br><br>
+        <button type="reset">Reset</button> &emsp; <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

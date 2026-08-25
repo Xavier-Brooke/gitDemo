@@ -15,8 +15,8 @@
             </div>
             <div class="user-functionalities">
                 <form action="/api/<%= user.id %>/details" method="get" style="display: inline-block;"><button>Details</button></form>
-                <form style="display: inline-block;"><button>Edit</button></form>
-                <form style="display: inline-block;"><button>Delete</button></form>
+                <form method="get" action="/api/<%= user.id %>/edit" style="display: inline-block;"><button>Edit</button></form>
+                <form method="post" action="/api/<%= user.id %>/delete?_method=DELETE" style="display: inline-block;"><button>Delete</button></form>
             </div>
         </div>
     <% } %>
