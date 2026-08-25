@@ -7,3 +7,8 @@ matplotlib/
 *.ipynb
 
 node_modules
+
+DSA/.gitignore
+DSA/DSA.iml
+*.idea
+*.xml
