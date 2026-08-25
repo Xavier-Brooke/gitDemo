@@ -1,7 +1,9 @@
 import mkdir from './mkdir.js' ;
+import rename from './rename.js' ;
 
 const utils = {
-    mkdir
+    mkdir,
+    rename
 }
 
 export default utils ;

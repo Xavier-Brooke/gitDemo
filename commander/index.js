@@ -88,6 +88,40 @@ async function main() {
             }
         }
 
+        // rename dir or file
+        else if(command?.toLowerCase() === 'rename') {
+            if(!flag) {
+                console.log(`rename: missing flag`) ;
+                console.log(`Try 'commander rename --help' for more information`) ;
+                process.exitCode = 1 ;
+            } else if((flag === '--help') || (flag === '-h')) {
+                if(!args[2]) {
+                    console.log(`Usage: rename [OPTION]... old name of  dir or file... new name of dir or file`) ;
+                    console.log(`Rename the dir or file, if that file or dir not exists than commader will exit with 1`) ;
+                    console.log(`For changing file name use :- 'commander rename --file oldNmae newName'`) ;
+                    console.log(`For changing dir name use :- 'commander rename --dir oldNmae newName'`) ;
+                } else {
+                    console.log(`mkdir : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                    console.log(`Try 'commander rename --help' for more information`) ;
+                    process.exitCode = 1 ;
+                }
+            } else if(flag === '--dir') {
+                // logic for renaming dir
+                const oldPath = args[2] ;
+                const newPath = args[3] ;
+                await utils.rename(oldPath, newPath) ;
+            } else if(flag === '--file') {
+                // logic for renaming file
+                const oldPath = args[2] ;
+                const newPath = args[3] ;
+                await utils.rename(oldPath, newPath) ;
+            } else {
+                console.log(`rename : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command`) ;
+                console.log(`Try 'commander rename --help' for more information`) ;
+                process.exitCode = 1 ;
+            }
+        }
+
         else {
             console.log(`commander : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command. See 'commander --help'`) ;
             process.exitCode = 127 ;
