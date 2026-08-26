@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.Stack ;
 
 public class _15_stack {
@@ -130,12 +131,13 @@ public class _15_stack {
     public static void main(String[] args) {
 
         Stack<Integer> stack = new Stack<>() ;
-        stack.push(1) ;
-        stack.push(2) ;
-        stack.push(3) ;
-        System.out.println(stack.peek());
-        reverseStack(stack);
-        System.out.println(stack.peek());
+
+//        stack.push(1) ;
+//        stack.push(2) ;
+//        stack.push(3) ;
+//        System.out.println(stack.peek());
+//        reverseStack(stack);
+//        System.out.println(stack.peek());
 
 //        String str = "Nusrat Fateh Ali Khan" ;
 //        String reverseStr = reverseString(str) ;
