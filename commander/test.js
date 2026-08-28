@@ -2,6 +2,20 @@ import path from 'node:path';
 import fs from 'node:fs/promises' ;
 import process from 'node:process';
 
+/* test 5 */
+const args = process.argv.slice(2) ;
+const checkPath = args[0] ;
+
+async function main() {
+    try {
+        console.log(path.isAbsolute(checkPath)) ;
+    } catch(err) {
+        console.log(err) ;
+    }
+}
+
+main() ; 
+
 /* test 4 */
 // console.log('hello') ;
 // process.exitCode = 2 ;

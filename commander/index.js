@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 
 import process from 'node:process' ;
+import readline from 'node:readline';
 import utils from './utils/main.js' ;
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
 const args = process.argv.slice(2) ;
 const command = args[0] ;
@@ -122,6 +128,31 @@ async function main() {
             }
         }
 
+        // change directory
+        /* 
+            cd will be implementd after some time
+            node.js can't change the shell dir directly
+        */
+        // else if(command === 'cd') {
+
+        // }
+
+        else if((!command) || (command?.toLowerCase() === '--help') || (command?.toLowerCase() === '-h')){
+
+            utils.help_page_1() ;
+
+            rl.question(`Press m to see more...\nPress q to exit\n`, answer => {
+                if(answer?.toLowerCase() === 'm') {
+                    console.log(`You will see more`) ;
+                } else if(answer?.toLowerCase() === 'q') {
+                    rl.close();
+                }  else {
+                    console.log(`Invalid request`) ;
+                    rl.close() ;
+                }
+            });
+        }
+
         else {
             console.log(`commander : 'commander ${command} ${flag} ${args.slice(2).join(' ')}' is not a valid command. See 'commander --help'`) ;
             process.exitCode = 127 ;
@@ -133,3 +164,5 @@ async function main() {
 }
 
 main() ;
+
+rl.close() ;
