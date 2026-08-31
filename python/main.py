@@ -83,3 +83,45 @@
 
 # char = 'A'
 # print(ord(char))
+
+
+# with open('countEven.txt', 'r+') as f :
+#     data = f.read()
+
+#     num = data.split(', ')
+#     print(num)
+#     count = 0
+#     for ele in num :
+#         if(int(ele)%2 == 0) :
+#             count += 1
+#     print(count)
+    # for char in data :
+        # if((data[i] != ',') and ((data[i] != ' '))) :
+        #     print(data[i], end=' ')
+        # if char not in [',', ' '] :
+        #     print(char, end=' ')
+
+
+class Student :
+    def __init__(self, name, age, city, roll_num) :
+        self.name = name
+        self.age = age
+        self.city = city
+        self.roll_num = roll_num
+
+class Engineer(Student) :
+    def __init__(self, name, age, city, roll_num, branch, cgpa) :
+        super().__init__(name, age, city, roll_num)
+        self.branch = branch
+        self.cgpa = cgpa
+
+    def getDetails(self) :
+        print(f'Name :- {self.name}')
+        print(f'Age :- {self.age}')
+        print(f'City :- {self.city}')
+        print(f'roll_num :- {self.roll_num}')
+        print(f'Brach :- {self.branch}')
+        print(f'cgpa :- {self.cgpa}')
+
+e1 = Engineer("Adam", 22, "Indore", 23, 'IT', 9.8)
+e1.getDetails()
