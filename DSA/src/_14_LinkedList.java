@@ -262,11 +262,7 @@ public class _14_LinkedList {
 
         // check if a LinkedList is palindrome
         public boolean isPalindrome() {
-            if(head == null) {
-                throw new IllegalStateException("LinkedList is empty") ;
-            }
-
-            if(head == tail) {
+            if((head == null) || (head == tail)) {
                 return true ;
             }
 
@@ -283,12 +279,12 @@ public class _14_LinkedList {
 
             Node leftPtr = head ;
             Node rightPtr = prev ;
-            while((rightPtr != null) && (leftPtr != rightPtr)) {
+            while(rightPtr != null) {
                 if(leftPtr.val != rightPtr.val) {
                     return false ;
                 }
+                rightPtr = rightPtr.next ;
                 leftPtr = leftPtr.next ;
-                rightPtr =  rightPtr.next ;
             }
 
             return true ;
@@ -298,9 +294,8 @@ public class _14_LinkedList {
     public static void main(String[] args) {
 
         LinkedList ll = new LinkedList() ;
-        ll.addFirst(0);
+        ll.addFirst(1);
         ll.addLast(1);
-        ll.addLast(0);
         System.out.println(ll.isPalindrome());
     }
 }
