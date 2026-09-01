@@ -3,6 +3,7 @@ commander/demo
 Pandas/
 NumPy/
 matplotlib/
+stat/
 
 *.ipynb
 
