@@ -308,6 +308,36 @@ public class _14_LinkedList {
 
             return false ;
         }
+
+        // remove cycle
+        public void removeCycle() {
+            Node slow = head ;
+            Node fast = head ;
+            boolean hasCycle = false ;
+            while((fast != null) && (fast.next != null)) {
+                slow = slow.next ;
+                fast = fast.next.next ;
+                if(slow == fast) {
+                    hasCycle = true ;
+                    break ;
+                }
+            }
+
+            if(!hasCycle) {
+                return ;
+            }
+
+            slow = head ;
+            Node prev = null;
+            while(slow != fast) {
+                slow = slow.next ;
+                prev = fast ;
+                fast = fast.next ;
+            }
+
+            assert prev != null;
+            prev.next = null ;
+        }
     }
 
     public static void main(String[] args) {
@@ -318,7 +348,9 @@ public class _14_LinkedList {
         ll.addLast(8);
         ll.addLast(34);
         ll.addFirst(3482);
-//        ll.tail.next = ll.getMid() ;
+        ll.tail.next = ll.getMid() ;
+        System.out.println(ll.hasCycle());
+        ll.removeCycle();
         System.out.println(ll.hasCycle());
     }
 }
