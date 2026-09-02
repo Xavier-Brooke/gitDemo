@@ -289,13 +289,36 @@ public class _14_LinkedList {
 
             return true ;
         }
+
+        // hasCycle
+        public boolean hasCycle() {
+            if((head == null) || (head == tail)) {
+                return false ;
+            }
+
+            Node slow, fast ;
+            slow = fast = head ;
+            while((fast != null) && (fast.next != null)) {
+                slow = slow.next ;
+                fast = fast.next.next ;
+                if(slow == fast) {
+                    return true ;
+                }
+            }
+
+            return false ;
+        }
     }
 
     public static void main(String[] args) {
 
         LinkedList ll = new LinkedList() ;
-        ll.addFirst(1);
         ll.addLast(1);
-        System.out.println(ll.isPalindrome());
+        ll.addFirst(0);
+        ll.addLast(8);
+        ll.addLast(34);
+        ll.addFirst(3482);
+//        ll.tail.next = ll.getMid() ;
+        System.out.println(ll.hasCycle());
     }
 }
