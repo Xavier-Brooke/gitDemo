@@ -52,13 +52,54 @@ public class _05_arrays {
         return trappedWater ;
     }
 
+    public static void reverse(int[] arr, int start, int end) {
+        if((start < 0) || (end >= arr.length) || (start > end)) {
+            throw new IllegalStateException(start + " and " + end + " is not a valid start and end") ;
+        }
+
+        while (start < end) {
+            int temp = arr[start] ;
+            arr[start] = arr[end] ;
+            arr[end] = temp ;
+            start++ ;
+            end-- ;
+        }
+    }
+
+    public static void rotate(int[] arr, int k) {
+        int n = arr.length ;
+        k %= n ;
+        if(k == 0) {
+            return ;
+        }
+        reverse(arr, 0, k-1);
+        reverse(arr, k, n-1);
+        reverse(arr, 0, n-1);
+    }
+
     // main function
     public static void main(String[] args) {
 
-        int[] heights = {4, 2, 0, 6, 3, 2,5} ;
-        System.out.println(trappingRainWater(heights)); ;
+        int[] arr = {1, 2, 3, 4, 5} ;
+        int k = 5 ;
+        System.out.print("Array before rotation :- ");
+        for(int ele : arr) {
+            System.out.print(ele + " ");
+        }
+        rotate(arr, k);
+        System.out.print("\nArray after rotation :- ");
+        for(int ele : arr) {
+            System.out.print(ele + " ");
+        }
+
+//        int[] heights = {4, 2, 0, 6, 3, 2,5} ;
+//        System.out.println(trappingRainWater(heights)); ;
 
 //        int[] arr = {-10, -2, -3, 23423} ;
 //        System.out.println(maxSum_prefixSum(arr));
+
+//        int[][] matrix = {{1, 2, 3, 4, 6}} ;
+//        System.out.println(matrix.length);
+//        System.out.println(matrix[0].length);
     }
 }
