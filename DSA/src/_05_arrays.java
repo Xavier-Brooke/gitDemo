@@ -77,20 +77,46 @@ public class _05_arrays {
         reverse(arr, 0, n-1);
     }
 
+    public static int mostWater(int[] heights) {
+        int n = heights.length ;
+        int mostWater = Integer.MIN_VALUE ;
+        int i = 0 ;
+        int j = (n-1) ;
+        int wtrLvl, wtrSpan,  tmpCollecteddWtr ;
+        while(i < j) {
+            wtrLvl = Math.min(heights[i], heights[j]) ;
+            wtrSpan = (j-i) ;
+            tmpCollecteddWtr = wtrLvl * wtrSpan ;
+            mostWater = Math.max(tmpCollecteddWtr, mostWater) ;
+            if(heights[i] <= heights[j]) {
+                i++ ;
+            } else {
+                j-- ;
+            }
+        }
+
+        return mostWater ;
+    }
+
     // main function
     public static void main(String[] args) {
 
-        int[] arr = {1, 2, 3, 4, 5} ;
-        int k = 5 ;
-        System.out.print("Array before rotation :- ");
-        for(int ele : arr) {
-            System.out.print(ele + " ");
-        }
-        rotate(arr, k);
-        System.out.print("\nArray after rotation :- ");
-        for(int ele : arr) {
-            System.out.print(ele + " ");
-        }
+//        int[] heights = {1, 8, 6, 2, 5, 4, 8, 3, 7} ;
+//        System.out.println(mostWater(heights));
+        int[] heights = {1, 1, 1, 8, 8, 1, 1, 1} ;
+        System.out.println(mostWater(heights));
+
+//        int[] arr = {1, 2, 3, 4, 5} ;
+//        int k = 5 ;
+//        System.out.print("Array before rotation :- ");
+//        for(int ele : arr) {
+//            System.out.print(ele + " ");
+//        }
+//        rotate(arr, k);
+//        System.out.print("\nArray after rotation :- ");
+//        for(int ele : arr) {
+//            System.out.print(ele + " ");
+//        }
 
 //        int[] heights = {4, 2, 0, 6, 3, 2,5} ;
 //        System.out.println(trappingRainWater(heights)); ;
