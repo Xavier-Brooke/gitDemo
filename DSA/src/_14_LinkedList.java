@@ -338,19 +338,56 @@ public class _14_LinkedList {
             assert prev != null;
             prev.next = null ;
         }
+
+        // zigZag
+        public void zigZag() {
+
+            // getMid
+            Node slow = head ;
+            Node fast = head.next ;
+            while((fast != null) && (fast.next != null)) {
+                slow = slow.next ;
+                fast = fast.next.next ;
+            }
+
+            // reversing second part
+            Node curr = slow.next ;
+            Node prev = null ;
+            slow.next = null ;
+            Node next ;
+            while(curr != null) {
+                next = curr.next ;
+                curr.next = prev ;
+                prev = curr ;
+                curr = next ;
+            }
+
+            // zigZag
+            Node LH = head ; // leftHead ;
+            Node RH = prev ; // rightHead ;
+            Node NLH, NRH ; // nextLeftHead, nextRightHead ;
+            while((LH != null) && (RH != null)) {
+                NLH = LH.next ;
+                LH.next = RH ;
+                LH = NLH ;
+
+                NRH = RH.next ;
+                RH.next = LH ;
+                RH = NRH ;
+            }
+        }
     }
 
     public static void main(String[] args) {
 
         LinkedList ll = new LinkedList() ;
         ll.addLast(1);
-        ll.addFirst(0);
-        ll.addLast(8);
-        ll.addLast(34);
-        ll.addFirst(3482);
-        ll.tail.next = ll.getMid() ;
-        System.out.println(ll.hasCycle());
-        ll.removeCycle();
-        System.out.println(ll.hasCycle());
+        ll.addFirst(2);
+        ll.addLast(4);
+        System.out.print("LinkedList before zigZag :- ") ;
+        ll.print();
+        ll.zigZag();
+        System.out.print("LinkedList after zigZag :- ");
+        ll.print();
     }
 }
