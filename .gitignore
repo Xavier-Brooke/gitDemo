@@ -8,6 +8,7 @@ stat/
 *.ipynb
 
 node_modules
+package-lock.json
 
 DSA/.gitignore
 DSA/DSA.iml
